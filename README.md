@@ -34,5 +34,5 @@ This project is a **Fake News Predictor** that uses Python, Natural Language Pro
 
 1. **Clone the Repository (optional):**
    ```bash
-   git clone https://github.com/antonkartmann/Fake-News-Predictior
+   git clone https://github.com/antonkartmann/Fake-News-Predictor
    cd Fake-News-Predictor
