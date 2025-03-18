@@ -7,13 +7,15 @@ from nltk.corpus import stopwords
 nltk.download('stopwords')
 stop_words = set(stopwords.words('english'))
 
-# Function to clean text (same as during training)
+# Function to clean text and remove paragraph breaks
 def clean_text(text):
     text = text.lower()
-    text = re.sub(r'\d+', '', text)
-    text = re.sub(r'[^\w\s]', '', text)
+    # Replace one or more whitespace characters (including newlines) with a single space
+    text = re.sub(r'\s+', ' ', text)
+    text = re.sub(r'\d+', '', text)  # Remove numbers
+    text = re.sub(r'[^\w\s]', '', text)  # Remove punctuation and special characters
     words = text.split()
-    words = [word for word in words if word not in stop_words]
+    words = [word for word in words if word not in stop_words]  # Remove stopwords
     return ' '.join(words)
 
 # Load the saved model and vectorizer
@@ -39,3 +41,4 @@ if __name__ == '__main__':
         label, probs = predict_news(user_input)
         print(f"Prediction: {label}")
         print(f"Probabilities -> Fake News: {probs[0]:.2f}, Real News: {probs[1]:.2f}\n")
+
