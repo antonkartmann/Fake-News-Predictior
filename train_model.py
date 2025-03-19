@@ -32,7 +32,7 @@ df_fake['label'] = 0
 
 # Combine the datasets
 df = pd.concat([df_true, df_fake]).reset_index(drop=True)
-# We use both the title and the text; you can also choose to use only the text.
+# I use both the title and the text; you can also choose to use only the text.
 df = df[['title', 'text', 'label']]
 df['combined'] = df['title'] + " " + df['text']
 
