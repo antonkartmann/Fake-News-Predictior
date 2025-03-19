@@ -18,7 +18,12 @@ def clean_text(text):
     text = re.sub(r'\d+', '', text)  # Remove numbers
     text = re.sub(r'[^\w\s]', '', text)  # Remove punctuation and special characters
     words = text.split()
-    words = [word for word in words if word not in stop_words]  # Remove stopwords
+    filtered_words = []  # Create an empty list to store filtered words
+    for word in words:  # Iterate through each word in the original list
+        if word not in stop_words:  # Check if the word is NOT in the stopwords set
+            filtered_words.append(word)  # Add it to the new list
+    words = filtered_words  # Overwrite the original list with the filtered words
+
     return ' '.join(words)
 
 # 1. Load data
